@@ -12,3 +12,7 @@ $(function(){
     
     console.log(slideCount);
 });
+
+
+szerokosc pojedynczego slajdu (100% / na ilosc slajdow)
+przypisac odpowiednia szerokosc dla kazdego slajdu
