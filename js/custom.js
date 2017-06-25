@@ -8,6 +8,21 @@ $(function () {
     var slideShow = $('.slide-show');
     var slideWidth = 100 / slideCount;
     var slideIndex = 0;
+    
+    /* funkcja slide */
+    function slide(newSlideIndex) {
+
+        if (newSlideIndex < 0 || newSlideIndex >= slideCount) {
+            return;
+        }
+        var marginLeft = (newSlideIndex * (-100)) + '%';
+        
+        slideShow.animate({
+            'margin-left': marginLeft
+        }, 500, function () {
+            slideIndex = newSlideIndex;
+        });
+    }
 
     /* automatyczna szerokosc elementu w zaleznosci od ilosci elementow w srodku */
     slideShow.css('width', slideCount * 100 + '%');
@@ -24,34 +39,12 @@ $(function () {
 
     /* klikniecie w strzalki */
     $('.prev-slide').click(function () {
-        var newSlideIndex = slideIndex - 1;
-
-        if (newSlideIndex < 0) {
-            return;
-        }
-
-        var marginLeft = (newSlideIndex * (-100)) + '%';
-        slideShow.animate({
-            'margin-left': marginLeft
-        }, 500, function () {
-            slideIndex = newSlideIndex;
-        });
+        slide(slideIndex - 1);
     });
 
     $('.next-slide').click(function () {
-        var newSlideIndex = slideIndex + 1;
-
-        if (newSlideIndex >= slideCount) {
-            return;
-        }
-
-        var marginLeft = (newSlideIndex * (-100)) + '%';
-        slideShow.animate({
-            'margin-left': marginLeft
-        }, 500, function () {
-            slideIndex = newSlideIndex;
-        });
+        slide(slideIndex + 1);
     });
 
- 
+
 });
