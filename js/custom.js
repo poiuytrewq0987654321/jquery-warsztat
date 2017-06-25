@@ -5,14 +5,17 @@
 $(function(){
     /* zmienne */
     var slideCount = $('.single-slide').length;
-    var SlideShow = $('.slide-show');
+    var slideShow = $('.slide-show');
+    var slideWidth = 100/slideCount;
     
     /* automatyczna szerokosc elementu w zaleznosci od ilosci elementow w srodku */
-    SlideShow.css('width',slideCount * 100 +'%');
-    
+    slideShow.css('width',slideCount * 100 +'%');
     console.log(slideCount);
+    
+    /* szerokosc i położenie pojedynczego slajdu */
+    
+    $('.single-slide').each(function(index){
+        $(this).css({'width': slideWidth + '%','margin-left':index * slideWidth + '%'});
+    })
+    
 });
-
-
-szerokosc pojedynczego slajdu (100% / na ilosc slajdow)
-przypisac odpowiednia szerokosc dla kazdego slajdu
